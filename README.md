@@ -1,59 +1,109 @@
-# Three-Tier Web Application Deployment on AWS EKS using AWS EKS, ArgoCD, Prometheus, Grafana, and Jenkins
+# End-to-End DevOps Implementation on MERN Stack
+
 [![AWS](https://img.shields.io/badge/AWS-%F0%9F%9B%A1-orange)](https://aws.amazon.com)
 [![Terraform](https://img.shields.io/badge/Terraform-%E2%9C%A8-lightgrey)](https://www.terraform.io)
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white)](https://kubernetes.io)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)](https://www.docker.com)
+[![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white)](https://www.jenkins.io)
+[![ArgoCD](https://img.shields.io/badge/ArgoCD-EF7B4D?style=flat&logo=argo&logoColor=white)](https://argoproj.github.io/cd/)
 
 ![Three-Tier Banner](assets/Three-Tier.gif)
 
-Welcome to the Three-Tier Web Application Deployment project! 🚀
+Welcome to the End-to-End DevOps Implementation on MERN Stack project! 🚀
 
-This repository hosts the implementation of a Three-Tier Web App using ReactJS, NodeJS, and MongoDB, deployed on AWS EKS. The project covers a wide range of tools and practices for a robust and scalable DevOps setup.
+This repository contains a complete DevOps implementation for a MERN (MongoDB, Express.js, React, Node.js) stack application, deployed on AWS EKS with full CI/CD automation, infrastructure as code, and monitoring capabilities.
 
-## Table of Contents
-- [Application Code](#application-code)
-- [Jenkins Pipeline Code](#jenkins-pipeline-code)
-- [Jenkins Server Terraform](#jenkins-server-terraform)
-- [Kubernetes Manifests Files](#kubernetes-manifests-files)
-- [Project Details](#project-details)
+## Tools & Technologies
 
-## Application Code
-The `Application-Code` directory contains the source code for the Three-Tier Web Application. Dive into this directory to explore the frontend and backend implementations.
+**Infrastructure & Cloud:**
+- Terraform - Infrastructure as Code
+- AWS (EC2, EKS, ECR, Route 53, ALB) - Cloud infrastructure and services
 
-## Jenkins Pipeline Code
-In the `Jenkins-Pipeline-Code` directory, you'll find Jenkins pipeline scripts. These scripts automate the CI/CD process, ensuring smooth integration and deployment of your application.
+**CI/CD & Automation:**
+- Jenkins - Continuous Integration and Continuous Deployment
+- Docker - Containerization
+- Kubernetes - Container orchestration
+- ArgoCD - GitOps-based continuous delivery
+- NGINX Ingress - Load balancing and routing
 
-## Jenkins Server Terraform
-Explore the `Jenkins-Server-TF` directory to find Terraform scripts for setting up the Jenkins Server on AWS. These scripts simplify the infrastructure provisioning process.
+**Monitoring & Observability:**
+- Prometheus - Metrics collection and scraping
+- Grafana - Real-time visualization and dashboards
 
-## Kubernetes Manifests Files
-The `Kubernetes-Manifests-Files` directory holds Kubernetes manifests for deploying your application on AWS EKS. Understand and customize these files to suit your project needs.
+**Application Stack:**
+- MongoDB - Database
+- Express.js - Backend framework
+- React - Frontend framework
+- Node.js - Runtime environment
 
-## Project Details
-🛠️ **Tools Explored:**
-- Terraform & AWS CLI for AWS infrastructure
-- Jenkins, Sonarqube, Terraform, Kubectl, and more for CI/CD setup
-- Helm, Prometheus, and Grafana for Monitoring
-- ArgoCD for GitOps practices
+## Project Highlights
 
-🚢 **High-Level Overview:**
-- IAM User setup & Terraform magic on AWS
-- Jenkins deployment with AWS integration
-- EKS Cluster creation & Load Balancer configuration
-- Private ECR repositories for secure image management
-- Helm charts for efficient monitoring setup
-- GitOps with ArgoCD - the cherry on top!
+### Infrastructure Provisioning
+- Provisioned AWS infrastructure and Kubernetes cluster using Terraform to ensure automated and reproducible environment setup
+- Automated VPC, subnets, security groups, and EKS cluster creation
+- IAM roles and policies for secure access management
 
-📈 **The journey covered everything from setting up tools to deploying a Three-Tier app, ensuring data persistence, and implementing CI/CD pipelines.**
+### CI/CD Pipeline
+- Configured Jenkins pipelines to automate build, test, container image creation, and artifact push for MERN stack services
+- Integrated security scanning (SonarQube, OWASP Dependency-Check, Trivy)
+- Automated Docker image building and pushing to AWS ECR
+
+### Kubernetes Deployment
+- Deployed services on Kubernetes using Helm charts
+- Implemented GitOps-based continuous delivery with ArgoCD
+- Configured NGINX Ingress and Route 53 DNS routing for external access
+- Set up persistent volumes for database storage
+
+### Monitoring & Observability
+- Implemented monitoring and observability using Prometheus for metrics scraping
+- Created Grafana dashboards for real-time visualization
+- Configured health checks and alerting for application services
+
+## Project Structure
+
+```
+├── Application-Code/              # MERN stack application source code
+│   ├── frontend/                  # React frontend application
+│   └── backend/                   # Node.js/Express backend API
+├── Jenkins-Pipeline-Code/         # Jenkins CI/CD pipeline definitions
+├── Jenkins-Server-TF/            # Terraform scripts for Jenkins infrastructure
+├── Kubernetes-Manifests-file/    # Kubernetes deployment manifests
+│   ├── Frontend/                 # Frontend service deployment
+│   ├── Backend/                  # Backend service deployment
+│   ├── Database/                 # MongoDB deployment with persistent storage
+│   └── ingress.yaml              # NGINX Ingress configuration
+└── assets/                       # Project assets and diagrams
+```
 
 ## Getting Started
-To get started with this project, follow the setup instructions in the project documentation. The project includes:
-- IAM user setup and AWS infrastructure provisioning with Terraform
-- Jenkins CI/CD pipeline configuration
-- EKS cluster creation and configuration
-- Application deployment with Kubernetes manifests
-- Monitoring setup with Prometheus and Grafana
-- GitOps implementation with ArgoCD
+
+### Prerequisites
+- AWS Account with appropriate permissions
+- Terraform installed
+- kubectl configured
+- Jenkins server (can be provisioned using Terraform scripts)
+- Docker installed
+
+### Setup Steps
+1. **Infrastructure Provisioning:**
+   - Navigate to `Jenkins-Server-TF/` directory
+   - Update `variables.tfvars` with your AWS credentials
+   - Run `terraform init` and `terraform apply` to provision infrastructure
+
+2. **Configure Jenkins:**
+   - Access Jenkins server and install required plugins
+   - Configure AWS credentials and GitHub tokens
+   - Create Jenkins pipelines using files from `Jenkins-Pipeline-Code/`
+
+3. **Deploy to Kubernetes:**
+   - Apply Kubernetes manifests from `Kubernetes-Manifests-file/`
+   - Configure ArgoCD to sync from Git repository
+   - Set up Route 53 DNS records pointing to Ingress
+
+4. **Setup Monitoring:**
+   - Deploy Prometheus and Grafana using Helm charts
+   - Configure service discovery and scraping
+   - Import Grafana dashboards for visualization
 
 ## Contributing
 We welcome contributions! If you have ideas for enhancements or find any issues, please open a pull request or file an issue.
