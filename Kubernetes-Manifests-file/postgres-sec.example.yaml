@@ -1,0 +1,10 @@
+# Copy to postgres-sec.yaml and apply (file is gitignored when named *secret*)
+# database_url format: postgresql://USER:PASSWORD@RDS_ENDPOINT:5432/todoapp
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-sec
+  namespace: three-tier
+type: Opaque
+stringData:
+  database_url: postgresql://appuser:CHANGE_ME@your-rds-endpoint.us-east-1.rds.amazonaws.com:5432/todoapp

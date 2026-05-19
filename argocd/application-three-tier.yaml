@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: three-tier-mern
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/harsh-85293/containerize-mern-stack-application.git
+    targetRevision: main
+    path: Kubernetes-Manifests-file
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: three-tier
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

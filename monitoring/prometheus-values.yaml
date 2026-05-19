@@ -1,0 +1,19 @@
+# Helm values for kube-prometheus-stack
+# helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+# helm upgrade --install monitoring prometheus-community/kube-prometheus-stack -n monitoring -f monitoring/prometheus-values.yaml
+
+grafana:
+  enabled: true
+  adminPassword: changeme
+
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    retention: 15d
+
+alertmanager:
+  enabled: true
+
+defaultRules:
+  create: true

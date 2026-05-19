@@ -1,0 +1,10 @@
+aws_region  = "us-east-1"
+project_name = "mern-devops"
+environment  = "prod"
+domain_name  = "example.com"
+
+db_username = "appuser"
+db_password = "CHANGE_ME_STRONG_PASSWORD"
+
+# Optional: restrict ingress to your IP
+# allowed_cidr_blocks = ["203.0.113.0/32"]

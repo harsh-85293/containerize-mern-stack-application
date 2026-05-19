@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: three-tier
+  namespace: argocd
+spec:
+  description: MERN three-tier application on EKS
+  sourceRepos:
+    - https://github.com/harsh-85293/containerize-mern-stack-application.git
+  destinations:
+    - namespace: three-tier
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"

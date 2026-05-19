@@ -49,6 +49,7 @@ build/
 terraform.tfvars
 *.tfvars
 !variables.tfvars.example
+!**/terraform.tfvars.example
 
 # Kubernetes secrets
 *secret*.yaml
